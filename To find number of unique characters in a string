@@ -1,0 +1,26 @@
+function StringChallenge(str) {
+  let maxUnique = 0;
+  const seen = {};
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    // If we've seen this character before, check all previous positions
+    if (seen[char] !== undefined) {
+      for (let start of seen[char]) {
+        const between = str.slice(start + 1, i);
+        const uniqueChars = new Set(between);
+        maxUnique = Math.max(maxUnique, uniqueChars.size);
+      }
+    }
+
+    // Track where we've seen each character
+    if (!seen[char]) seen[char] = [];
+    seen[char].push(i);
+  }
+
+  return maxUnique;
+}
+
+// keep this function call here
+console.log(StringChallenge(readline()));
