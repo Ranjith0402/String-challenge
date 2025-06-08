@@ -22,5 +22,4 @@ function StringChallenge(str) {
   return maxUnique;
 }
 
-// keep this function call here
 console.log(StringChallenge(readline()));
